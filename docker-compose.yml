@@ -1,0 +1,12 @@
+version: '2.3'
+
+services:
+
+  api:
+    container_name: api
+    restart: always
+    build: ./api
+    runtime: nvidia
+    command: python server.py 
+    ports:
+      - "5000:5000"
