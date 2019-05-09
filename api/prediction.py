@@ -1,4 +1,4 @@
-import os, io, json, tarfile, glob, time, logging, base64, boto3, PIL, torch
+import json, time, logging, torch
 import torch.nn.functional as F
 from torchvision import transforms
 
@@ -42,7 +42,7 @@ def image_to_tensor(img):
     """Transforms the posted image to a PyTorch Tensor."""
     
     img_tensor = preprocess_pipeline(img)
-    img_tensor = img_tensor.unsqueeze(0) # 3d to 4d for batch
+    img_tensor = img_tensor.unsqueeze(0).cuda() # 3d to 4d for batch
     return img_tensor
     
 def inference(img):
